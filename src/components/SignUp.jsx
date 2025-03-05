@@ -19,6 +19,7 @@ const SignUp = () => {
       const session = await authService.createAccount(data);
       if (session) {
         const userData = await authService.getCurrentUser();
+        console.log(userData);
         if (userData) {
           dispatch(Login(userData));
           navigate("/");
@@ -40,16 +41,16 @@ const SignUp = () => {
         Sign in to your account
       </h2>
       <p>
-        Don&apos;t jave any account?&nbsp;
+        Don&apos;t have any account?&nbsp;
         <Link
-          to="/signup"
+          to="/login"
           className="font-medium text-primary transition-all duration-200 hover:underline"
         >
           Sign up
         </Link>
       </p>
       {error && <p className="text-red-600 mt-8 text-center">{error}</p>}
-      <form onSubmit={handleSubmit(create())}>
+      <form onSubmit={handleSubmit(Signup)}>
         <div className="space-y-5">
           <Input
             label="Full Name"

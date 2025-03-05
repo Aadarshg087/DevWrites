@@ -18,9 +18,9 @@ class AuthService {
     try {
       const userAccount = await this.account.create(
         ID.unique(),
-        name,
         email,
-        password
+        password,
+        name
       );
       if (userAccount) {
         // call another method to directly login the user
@@ -50,6 +50,7 @@ class AuthService {
       return await this.account.get();
     } catch (error) {
       console.log("Error in getting the current user", error);
+      // throw error;
     }
     return null;
   }

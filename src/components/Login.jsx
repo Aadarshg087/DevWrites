@@ -30,10 +30,10 @@ const Login = () => {
   };
 
   return (
-    <div className="flex items.-center justify-center w-full">
-      <div className="mx-auto w-full max-w-lg bg-gray-100 rounded-xl p-10 border border-black/10">
-        <div className="mb-2 flex justify-center">
-          <span className="inline-block w-full max-w-[100px">
+    <div className="flex items-center justify-center w-full">
+      <div className="mx-auto w-full max-w-2xl bg-gray-100 rounded-xl border-8 px-24 border-black/10 ">
+        <div className="mb-2 flex justify-center ">
+          <span className="inline-block max-w-[100px]">
             <Logo width="100%" />
           </span>
         </div>
@@ -41,7 +41,7 @@ const Login = () => {
           Sign in to your account
         </h2>
         <p>
-          Don&apos;t jave any account?&nbsp;
+          Don&apos;t have any account?&nbsp;
           <Link
             to="/signup"
             className="font-medium text-primary transition-all duration-200 hover:underline"
@@ -50,7 +50,7 @@ const Login = () => {
           </Link>
         </p>
         {error && <p className="text-red-600 mt-8 text-center">{error}</p>}
-        <form onSubmit={handleSubmit(login)} className="mt-8">
+        <form onSubmit={handleSubmit(login)} className="m-72">
           <div className="space-y-5">
             <Input
               label="Email"

@@ -1,6 +1,6 @@
 import React from "react";
 import { useDispatch } from "react-redux";
-import { authService } from "../../appwrite/auth.appwrite.js";
+import authService from "../../appwrite/auth.appwrite.js";
 import { logout } from "../../store/authSlice.js";
 
 const LogoutBtn = () => {
@@ -16,7 +16,10 @@ const LogoutBtn = () => {
       });
   };
   return (
-    <button className="inline-block px-6 py-2 duration-200 hover:blue-100 rounded-full">
+    <button
+      onClick={logoutHandler}
+      className="inline-block px-6 py-2 duration-200 hover:blue-100 rounded-full"
+    >
       Logout
     </button>
   );
