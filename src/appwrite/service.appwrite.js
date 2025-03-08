@@ -81,7 +81,7 @@ export class Service {
   // status key should mentioned as indexes in the appwrite for this to work
   async getActivePosts(queries = [Query.equal("status", "active")]) {
     try {
-      return await this.databases.getDocument(
+      return await this.databases.listDocuments(
         config.appwriteDatabaseID,
         config.appwriteCollectionID,
         queries

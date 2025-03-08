@@ -2,6 +2,7 @@ import React from "react";
 import { useDispatch } from "react-redux";
 import authService from "../../appwrite/auth.appwrite.js";
 import { logout } from "../../store/authSlice.js";
+import Button from "../Button.jsx";
 
 const LogoutBtn = () => {
   const dispatch = useDispatch();
@@ -16,12 +17,12 @@ const LogoutBtn = () => {
       });
   };
   return (
-    <button
+    <Button
       onClick={logoutHandler}
-      className="inline-block px-6 py-2 duration-200 hover:blue-100 rounded-full"
+      className="inline-block px-6 py-2 ml-2 duration-200 hover:bg-blue-700 hover:text-white cursor-pointer rounded-full"
     >
       Logout
-    </button>
+    </Button>
   );
 };
 

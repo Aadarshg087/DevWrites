@@ -7,7 +7,7 @@ import Button from "./Button.jsx";
 import PostCard from "./PostCard.jsx";
 import Input from "./Input.jsx";
 import Select from "./Select.jsx";
-import Post from "../pages/Post.jsx";
+import Post from "../pages/CurrPost.jsx";
 import RTE from "./RTE.jsx";
 import SignUp from "./SignUp.jsx";
 import Login from "./Login.jsx";

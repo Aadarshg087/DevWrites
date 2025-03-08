@@ -41,13 +41,13 @@ const Header = () => {
   return (
     <header className="py-3 shadow bg-gray-500">
       <Container>
-        <nav className="flex">
-          <div className="mr-4">
+        <nav className="flex w-full">
+          <div className="">
             <Link to="/">
               <Logo width="70px" />
             </Link>
           </div>
-          <ul className="flex ml-auto">
+          <ul className="flex ml-auto gap-5">
             {navItems.map((item) =>
               item.active ? (
                 <li key={item.name}>

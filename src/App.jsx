@@ -31,8 +31,7 @@ function App() {
       <div className="w-full block text-center">
         <Header />
         <main>
-          {" "}
-          <Outlet />{" "}
+          <Outlet />
         </main>
         <Footer />
       </div>

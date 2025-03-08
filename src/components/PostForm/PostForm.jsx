@@ -53,11 +53,7 @@ const PostForm = ({ post }) => {
 
   const slugTransform = useCallback((value) => {
     if (value && typeof value === "string") {
-      return value
-        .trim()
-        .toLowerCase()
-        .replace(/^[a-zA-Z\d\s]+/g, "-")
-        .replace(/\s/g, "-");
+      return value.trim().toLowerCase().replace(/\s+/g, "-");
     }
     return "";
   }, []);
@@ -75,18 +71,22 @@ const PostForm = ({ post }) => {
   }, [watch, slugTransform, setValue]);
 
   return (
-    <form onSubmit={handleSubmit(submit)} className="flex flex-wrap">
-      <div className="w-2/3 px-2">
+    <form
+      onSubmit={handleSubmit(submit)}
+      className="flex flex-wrap 
+       justify-around"
+    >
+      <div className=" w-1/2 flex flex-col justify-between">
         <Input
-          label="Title :"
+          label="Title : "
           placeholder="Title"
-          className="mb-4"
+          className="mb-4 w-1/2"
           {...register("title", { required: true })}
         />
         <Input
-          label="Slug :"
+          label="Slug : "
           placeholder="Slug"
-          className="mb-4"
+          className="mb-4 w-1/2"
           {...register("slug", { required: true })}
           onInput={(e) => {
             setValue("slug", slugTransform(e.currentTarget.value), {
@@ -94,22 +94,29 @@ const PostForm = ({ post }) => {
             });
           }}
         />
-
-        <RTE
-          label="Content :"
-          name="content"
-          control={control}
-          defaultValue={getValues("content")}
+      </div>
+      <div className=" w-1/2 flex flex-col justify-between items-right">
+        <Input
+          label="Feature Image : "
+          type="file"
+          className=" w-1/2   cursor-pointer"
+          accept="image/png, image/jpg, image/jpeg image/gif "
+          {...register("image")}
+        />
+        <Select
+          label="Status : "
+          options={["Active", "Inactive"]}
+          className=" w-1/2"
+          {...register("status", { required: true })}
         />
       </div>
+      <RTE
+        label="Content :"
+        name="content"
+        control={control}
+        defaultValue={getValues("content")}
+      />
       <div className="w-1/3 px-2">
-        <Input
-          label="Feature Image"
-          type="file"
-          className="mb-4"
-          accept="image/png, image/jpg, image/jpeg image/gif "
-          {...register("image", { required: true })}
-        />
         {post && (
           <div>
             <img
@@ -118,16 +125,10 @@ const PostForm = ({ post }) => {
             />
           </div>
         )}
-        <Select
-          options={["acitve", "inactive"]}
-          label="Status"
-          className="mb-4"
-          {...register("status", { required: true })}
-        />
         <Button
           type="submit"
           bgColor={post ? "bg-green-500" : undefined}
-          className="w-full"
+          className="cursor-pointer hover:bg-blue-700 hover:text-white w-1/2 mt-10"
         >
           {post ? "Update" : "Submit"}
         </Button>
