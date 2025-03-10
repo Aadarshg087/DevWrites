@@ -12,11 +12,11 @@ const Login = () => {
   const { register, handleSubmit } = useForm();
   const [error, setError] = useState("");
   const authStatus = useSelector((state) => state.auth.status);
-  // useEffect(() => {
-  //   if (authStatus) {
-  //     navigate("/");
-  //   }
-  // }, [authStatus]);
+  useEffect(() => {
+    if (authStatus) {
+      navigate("/");
+    }
+  }, [authStatus]);
 
   const loginUser = async (data) => {
     console.log(data);
@@ -27,6 +27,7 @@ const Login = () => {
         const userData = await authService.getCurrentUser();
         console.log("userData", userData);
         if (userData) {
+          alert("loggin in ");
           navigate("/");
           dispatch(login(userData));
         }
@@ -87,7 +88,7 @@ const Login = () => {
               className="cursor-pointer hover:bg-blue-700 hover:text-white duration-200"
               type="submit"
             >
-              Sign In
+              Login
             </Button>
           </div>
         </form>

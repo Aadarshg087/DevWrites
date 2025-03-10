@@ -17,6 +17,8 @@ const Home = () => {
     // const res =
     return useSelector((state) => state.auth.status);
   };
+  // console.log(posts.length);
+  // console.log(posts);
   if (!checkLogin()) {
     return <Container>Login to see the posts</Container>;
   } else if (posts.length === 0)
@@ -28,6 +30,7 @@ const Home = () => {
           {posts.map((post) => (
             <div key={post.$id} className="p-2 w-1/4 ">
               {/* <PostCard post={post} /> */}
+              {console.log(post)}
               <PostCard {...post} />
             </div>
           ))}
