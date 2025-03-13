@@ -1,4 +1,4 @@
-import React, { useCallback, useEffect } from "react";
+import React, { useCallback, useEffect, useState } from "react";
 import { useForm } from "react-hook-form";
 import { Button, Input, Select, RTE } from "../index.js";
 import appwriteService from "../../appwrite/service.appwrite.js";
@@ -25,13 +25,15 @@ const PostForm = ({ post }) => {
         : null;
 
       if (file) {
+        // if uploaded, then  delete previous one
         await appwriteService.deleteFile(post.featuredImage);
       }
+
       const DBPost = await appwriteService.updatePost(post.$id, {
         ...data,
         featuredImage: file ? file.$id : undefined,
       });
-
+      console.log("DBPost", DBPost);
       if (DBPost) {
         navigate(`/post/${DBPost.$id}`);
       }
@@ -59,15 +61,22 @@ const PostForm = ({ post }) => {
   }, []);
 
   useEffect(() => {
+    // If we're editing a post, make sure the slug is set properly on component mount
+
+    if (post && post.title) {
+      setValue("slug", post.slug || slugTransform(post.title));
+    }
+  }, [post, setValue, slugTransform]);
+
+  useEffect(() => {
     const subscription = watch((value, { name }) => {
       if (name === "title") {
         setValue("slug", slugTransform(value?.title, { shouldValidate: true }));
       }
-
-      return () => {
-        subscription.unsubscribe();
-      };
     });
+    return () => {
+      subscription.unsubscribe();
+    };
   }, [watch, slugTransform, setValue]);
 
   return (
@@ -117,14 +126,6 @@ const PostForm = ({ post }) => {
         defaultValue={getValues("content")}
       />
       <div className="w-1/3 px-2">
-        {post && (
-          <div>
-            <img
-              src={appwriteService.getFilePreview(post.featuredImage)}
-              alt={post.title}
-            />
-          </div>
-        )}
         <Button
           type="submit"
           bgColor={post ? "bg-green-500" : undefined}

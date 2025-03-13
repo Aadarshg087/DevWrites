@@ -1,6 +1,6 @@
 import React from "react";
 import { useEffect, useState } from "react";
-import { Container, PostForm } from "../components";
+import { Button, Container, PostForm } from "../components";
 import appwriteService from "../appwrite/service.appwrite.js";
 import { useNavigate, useParams } from "react-router-dom";
 
@@ -14,9 +14,11 @@ const EditPost = () => {
       appwriteService
         .getPost(slug)
         .then((post) => {
-          if (post) setPosts(post);
+          if (post) setPost(post);
         })
-        .catch(() => {});
+        .catch((err) => {
+          console.log("Error in getting the details", err);
+        });
     } else {
       navigate("/");
     }

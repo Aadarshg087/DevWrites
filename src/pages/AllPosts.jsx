@@ -1,8 +1,7 @@
 import React from "react";
 import { useState, useEffect } from "react";
 import appwriteService from "../appwrite/service.appwrite.js";
-import { PostCard } from "../components";
-import { Container } from "../components";
+import { PostCard, Container } from "../components";
 
 const AllPosts = () => {
   const [post, setPost] = useState([]);
@@ -17,14 +16,19 @@ const AllPosts = () => {
         console.log("Error in fetching all the posts", err);
       });
   }, []);
+  console.log(post);
   return (
     <div className="w-full py-8">
-      <Container>
+      <Container className="">
         <div className="flex flex-wrap">
-          {post.length() > 0 ? (
-            post.map((post) => (
-              <div key={post.$id} className="p-2 w-1/4">
-                <PostCard post={post} />
+          {post.length > 0 ? (
+            post.map((p) => (
+              <div key={p.$id} className="p-2">
+                <PostCard
+                  id={p.$id}
+                  title={p.title}
+                  featuredImage={p.featuredImage}
+                />
               </div>
             ))
           ) : (
