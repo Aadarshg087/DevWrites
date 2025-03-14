@@ -51,7 +51,11 @@ const Home = () => {
   }, [posts]);
 
   if (!checkLogin()) {
-    return <Container>Login to see the posts</Container>;
+    return (
+      <Container className="h-[300px] text-3xl">
+        Login to see the posts
+      </Container>
+    );
   } else if (posts.length === 0)
     return <Container className="min-h-60 ">No Blogs!</Container>;
   else {

@@ -32,11 +32,7 @@ const router = createBrowserRouter([
       },
       {
         path: "/signup",
-        element: (
-          <AuthLayout authentication={false}>
-            <SignUp />
-          </AuthLayout>
-        ),
+        element: <SignUp />,
       },
       {
         path: "/all-posts",

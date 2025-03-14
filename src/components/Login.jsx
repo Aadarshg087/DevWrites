@@ -27,7 +27,7 @@ const Login = () => {
         const userData = await authService.getCurrentUser();
         console.log("userData", userData);
         if (userData) {
-          alert("loggin in ");
+          alert("loggin in");
           navigate("/");
           dispatch(login(userData));
         }
