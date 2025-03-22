@@ -1,10 +1,11 @@
 import React from "react";
 import { Editor } from "@tinymce/tinymce-react";
 import { Controller } from "react-hook-form";
-import config from "../conf/config";
+import config from "../conf/config.js";
 
 const RTE = ({ name, control, label, defaultValue = "" }) => {
   console.log(config.RTE_KEY);
+  console.log(config.appwriteBucketID);
   return (
     <div className="w-3/4 ">
       {label && <label className="inline-block mb-1 pl-1">{label}</label>}
