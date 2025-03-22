@@ -60,30 +60,27 @@ const Home = () => {
     return <Container className="min-h-60 ">No Blogs!</Container>;
   else {
     return (
-      <>
-        <div className="w-full py-8">
-          <Container>
-            <div className="flex flex-wrap">
-              {posts.map((post) => {
-                {
-                  console.log("posts main: ", post);
-                  console.log("id main: ", post.$id);
-                }
-                return (
-                  <div key={post.$id} className="p-2 w-1/4 ">
-                    <PostCard
-                      id={post.$id}
-                      title={post.title}
-                      featuredImage={filePreviews[post.$id]}
-                    />
-                  </div>
-                );
-              })}
-            </div>
-          </Container>
-        </div>
-        ;
-      </>
+      <div className=" bg-gradient-to-b from-gray-200 to-gray-300  rounded-lg shadow-lg p-4  py-10">
+        <Container>
+          <div className="flex flex-wrap">
+            {posts.map((post) => {
+              {
+                console.log("posts main: ", post);
+                console.log("id main: ", post.$id);
+              }
+              return (
+                <div key={post.$id} className="p-2 w-1/4">
+                  <PostCard
+                    id={post.$id}
+                    title={post.title}
+                    featuredImage={filePreviews[post.$id]}
+                  />
+                </div>
+              );
+            })}
+          </div>
+        </Container>
+      </div>
     );
   }
 };

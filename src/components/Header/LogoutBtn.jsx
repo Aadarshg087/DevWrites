@@ -19,7 +19,7 @@ const LogoutBtn = () => {
   return (
     <Button
       onClick={logoutHandler}
-      className="inline-block px-6 py-2 ml-2 duration-200 hover:bg-blue-700 hover:text-white cursor-pointer rounded-full"
+      className="px-4 py-2 bg-blue-500 text-white rounded-lg hover:bg-blue-900 duration-400"
     >
       Logout
     </Button>

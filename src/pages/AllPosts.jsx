@@ -1,7 +1,7 @@
 import React from "react";
 import { useState, useEffect } from "react";
 import appwriteService from "../appwrite/service.appwrite.js";
-import { PostCard, Container } from "../components";
+import { PostCard } from "../components";
 
 const AllPosts = () => {
   const [post, setPost] = useState([]);
@@ -42,25 +42,21 @@ const AllPosts = () => {
 
   console.log(post);
   return (
-    <div className="w-full py-8 ">
-      <Container className="flex justify-start ">
-        <div className="flex flex-wrap justify-between">
-          {post.length > 0 ? (
-            post.map((p) => (
-              <div key={p.$id} className="p-2">
-                {console.log("p", p)}
-                <PostCard
-                  id={p.$id}
-                  title={p.title}
-                  featuredImage={previews[p.$id]}
-                />
-              </div>
-            ))
-          ) : (
-            <h1>There are no posts</h1>
-          )}
-        </div>
-      </Container>
+    <div className="grid grid-cols-1 md:grid-cols-3 gap-6 p-10">
+      {post.length > 0 ? (
+        post.map((p) => (
+          <div key={p.$id} className="bg-white rounded-lg shadow-lg p-4">
+            {console.log("p", p)}
+            <PostCard
+              id={p.$id}
+              title={p.title}
+              featuredImage={previews[p.$id]}
+            />
+          </div>
+        ))
+      ) : (
+        <h1>There are no posts</h1>
+      )}
     </div>
   );
 };

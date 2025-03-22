@@ -63,8 +63,12 @@ const CurrPost = () => {
   } else
     return (
       <>
-        <div className=" bg-white text-black rouned-xl w-3/4 mx-auto my-10 p-5 ">
-          <img src={filePreview} alt="Some Image" />
+        <div className=" bg-white text-black rounded-xl w-3/4 mx-auto my-10 p-5 ">
+          <img
+            src={filePreview}
+            alt="Some Image"
+            className=" block mx-auto h-[500px]"
+          />
           <h1 className="mb-10 font-bold text-3xl">{currPost?.title}</h1>
           <p className="flex flex-col text-left">
             {parse(String(currPost?.content))}
